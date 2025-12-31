@@ -7,23 +7,22 @@
   
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
   <link rel="stylesheet" href="link.css">
-  <script src="link.js" defer></script>
 </head>
-
 <body>
+
   <div class="card">
 
     <div class="badge">💸 PAGA MENOS JÁ</div>
 
     <h1>
-      Estás a pagar <span>demais</span>  
-      pelo teu serviço em casa?
+      Estás a pagar <span>demais</span> pelo teu serviço em casa?
     </h1>
 
     <p class="subtitle">
-      Internet + TV + Telemóvel  
-      por um preço que dói menos no bolso 😌
+      Internet + TV + Telemóvel por um preço que dói menos no bolso 😌
     </p>
 
     <div class="logos">
@@ -32,31 +31,55 @@
       <img src="https://yt3.googleusercontent.com/jXFSoeWPwKsZ6CofWYeFnVecVco2-x9gdoiOX8tuofGeGJtUNVi2rONWb1pNZhoBGVwo-Pvc0TA=s900-c-k-c0x00ffffff-no-rj" alt="NOS">
     </div>
 
-    <form id="leadForm">
-      <input type="text" id="nome" placeholder="Teu nome" required>
-
-      <input type="tel" id="telefone" placeholder="Telemóvel para contacto" required>
-
-      <select id="operadora" required>
+    <!-- FORMULÁRIO PRONTO PARA FORMSPREE -->
+    <form action="https://formspree.io/f/SEU_FORM_ID" method="POST">
+      <input type="text" name="nome" placeholder="Teu nome" required>
+      <input type="tel" name="telefone" placeholder="Telemóvel para contacto" required>
+      <select name="operadora" required>
         <option value="">Qual é a tua operadora atual?</option>
         <option>Vodafone</option>
         <option>MEO</option>
         <option>NOS</option>
         <option>Outra</option>
       </select>
-
       <button type="submit">Quero pagar menos 🔥</button>
     </form>
 
     <p id="mensagem"></p>
-  </div>
-        <div class="card">
-  <!-- TODO O CONTEÚDO -->
-</div>
 
-<footer>
-  <p>© 2025 · Todos os direitos reservados</p>
-</footer>
+  </div>
+
+  <footer>
+    <p>© 2025 · Todos os direitos reservados</p>
+  </footer>
+
+  <!-- JS opcional para mensagem de sucesso -->
+  <script>
+    const form = document.querySelector("form");
+    const mensagem = document.getElementById("mensagem");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const action = form.getAttribute("action");
+
+      fetch(action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(response => {
+        if(response.ok){
+          mensagem.textContent = "Obrigado! Vamos entrar em contacto 🔥";
+          form.reset();
+        } else {
+          mensagem.textContent = "Ocorreu um erro, tenta novamente 😅";
+        }
+      })
+      .catch(() => {
+        mensagem.textContent = "Ocorreu um erro, tenta novamente 😅";
+      });
+    });
+  </script>
 
 </body>
 </html>
