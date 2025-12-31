@@ -98,3 +98,43 @@ footer p {
   color: #ffffff;
   opacity: 0.7;
 }
+/* ===== AJUSTE MOBILE ===== */
+@media (max-width: 768px) {
+
+  body {
+    padding: 15px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .logos {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .logos img {
+    height: 50px;
+  }
+
+  input,
+  select,
+  button {
+    font-size: 15px;
+  }
+
+  footer p {
+    font-size: 11px;
+  }
+}
